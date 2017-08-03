@@ -8,6 +8,11 @@ TagManager:
   - posBox
   - startButton
   - exitButton
+  - portal
+  - keyhole
+  - leftcontroller
+  - rightcontroller
+  - key
   layers:
   - Default
   - TransparentFX
@@ -19,7 +24,7 @@ TagManager:
   - 
   - focus
   - posBox
-  - 
+  - portal
   - 
   - 
   - 

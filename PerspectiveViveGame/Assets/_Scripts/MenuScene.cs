@@ -12,6 +12,12 @@ public class MenuScene : MonoBehaviour {
     [SerializeField]
     private Button exitButton;
 
+
+    private AudioSource mainMenuMusic;
+
+    private AudioSource clickSound;
+
+
 	// Use this for initialization
 	void Start () {
         Button start = startButton.GetComponent<Button>();
@@ -19,6 +25,14 @@ public class MenuScene : MonoBehaviour {
 
         Button exit = exitButton.GetComponent<Button>();
         exit.onClick.AddListener(exitGame);
+
+        var aSources = GetComponents<AudioSource>();
+
+        mainMenuMusic = aSources[0];
+        mainMenuMusic.Play();
+
+        clickSound = aSources[1];
+
 	}
 	
 	// Update is called once per frame
@@ -28,6 +42,7 @@ public class MenuScene : MonoBehaviour {
     private void startGame() {
         Debug.Log("the start button has been clicked");
         SceneManager.LoadScene("FirstLevel");
+        clickSound.Play();
     }
 
     private void exitGame() {
