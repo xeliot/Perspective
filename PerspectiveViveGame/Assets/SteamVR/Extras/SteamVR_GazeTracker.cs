@@ -23,7 +23,7 @@ public class SteamVR_GazeTracker : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-	
+		
 	}
 
     public virtual void OnGazeOn(GazeEventArgs e)

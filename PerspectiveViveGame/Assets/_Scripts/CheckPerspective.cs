@@ -10,6 +10,7 @@ public class CheckPerspective : MonoBehaviour {
 
     public static bool keyInHole;
     private bool portalPlayed = false;
+	PickupParent pickupParent;
 
     [SerializeField]
     private GameObject portal;
@@ -33,7 +34,7 @@ public class CheckPerspective : MonoBehaviour {
 		Ray ray = new Ray (vrcam.head.position, vrcam.head.forward);
 		RaycastHit hit;
 		if (Physics.Raycast (ray, out hit, 1000)) {
-			if (hit.collider.tag == "focus" && correctPos) {
+			if (hit.collider.tag == "focus" && correctPos && GameObject.Find("[CameraRig]").GetComponentInChildren<PickupParent> ().touchpadDown) {
 				Debug.Log ("Key found!");
 				realKey.SetActive (true);
 				puzzleKey.SetActive (false);

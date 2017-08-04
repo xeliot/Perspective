@@ -15,8 +15,6 @@ public class MenuScene : MonoBehaviour {
 
     private AudioSource mainMenuMusic;
 
-    private AudioSource clickSound;
-
 
 	// Use this for initialization
 	void Start () {
@@ -26,12 +24,9 @@ public class MenuScene : MonoBehaviour {
         Button exit = exitButton.GetComponent<Button>();
         exit.onClick.AddListener(exitGame);
 
-        var aSources = GetComponents<AudioSource>();
+        mainMenuMusic = GetComponent<AudioSource>();
 
-        mainMenuMusic = aSources[0];
         mainMenuMusic.Play();
-
-        clickSound = aSources[1];
 
 	}
 	
@@ -42,7 +37,6 @@ public class MenuScene : MonoBehaviour {
     private void startGame() {
         Debug.Log("the start button has been clicked");
         SceneManager.LoadScene("FirstLevel");
-        clickSound.Play();
     }
 
     private void exitGame() {
