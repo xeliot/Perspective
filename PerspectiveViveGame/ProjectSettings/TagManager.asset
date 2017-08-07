@@ -13,6 +13,8 @@ TagManager:
   - leftcontroller
   - rightcontroller
   - key
+  - portal2
+  - wordPosBox
   layers:
   - Default
   - TransparentFX

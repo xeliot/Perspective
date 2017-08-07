@@ -8,6 +8,7 @@ public class PickupParent : MonoBehaviour {
 	SteamVR_TrackedObject trackedObj;
 	SteamVR_Controller.Device device;
 	public bool touchpadDown = false;
+	public bool triggerUp = true;
 
 	void Awake () {
 		trackedObj = GetComponent<SteamVR_TrackedObject>();
@@ -28,6 +29,13 @@ public class PickupParent : MonoBehaviour {
 
 		if (device.GetPressUp (SteamVR_Controller.ButtonMask.Touchpad)) {
 			touchpadDown = false;
+		}
+
+		if (device.GetTouchUp (SteamVR_Controller.ButtonMask.Trigger)) {
+			triggerUp = true;
+		}
+		if (device.GetTouchDown (SteamVR_Controller.ButtonMask.Trigger)) {
+			triggerUp = false;
 		}
 	}
 

@@ -9,8 +9,11 @@ public class CheckPerspective : MonoBehaviour {
 	public GameObject puzzleKey;
 
     public static bool keyInHole;
-    private bool portalPlayed = false;
+    private bool portalOnePlayed = false;
+    private bool portalTwoPlayed = false;
 	PickupParent pickupParent;
+
+    private AudioSource mainMusic;
 
     [SerializeField]
     private GameObject portal;
@@ -21,10 +24,8 @@ public class CheckPerspective : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         portalAnimator = portal.GetComponent<Animator>();
-        /*
-        portalAnimator.StopPlayback();
-        portalAnimator.speed = 0;
-        */
+        mainMusic = GetComponent<AudioSource>();
+        mainMusic.Play();
         correctPos = false;
 	}
 	
@@ -34,7 +35,7 @@ public class CheckPerspective : MonoBehaviour {
 		Ray ray = new Ray (vrcam.head.position, vrcam.head.forward);
 		RaycastHit hit;
 		if (Physics.Raycast (ray, out hit, 1000)) {
-			if (hit.collider.tag == "focus" && correctPos && GameObject.Find("[CameraRig]").GetComponentInChildren<PickupParent> ().touchpadDown) {
+			if (hit.collider.tag == "focus" && correctPos && (GameObject.Find("Controller (left)").GetComponent<PickupParent> ().touchpadDown || GameObject.Find("Controller (right)").GetComponent<PickupParent> ().touchpadDown)) {
 				Debug.Log ("Key found!");
 				realKey.SetActive (true);
 				puzzleKey.SetActive (false);
@@ -44,16 +45,17 @@ public class CheckPerspective : MonoBehaviour {
 			}
 		}
         if (keyInHole) {
-            if (!portalPlayed) {
-                portalAnimator.SetBool("TouchedPortal", true);
-                portalPlayed = true;
+            if (!portalOnePlayed) {
+				portal.SetActive (true);
+				StartCoroutine ("PortalOpen");
+                portalOnePlayed = true;
             }
         }
 	}
 	void OnTriggerEnter(Collider other)
 	{
-        if (other.tag == "portal" && portalPlayed) {
-            Debug.Log("you have hit the portal");
+        if (other.tag == "portal" && portalOnePlayed) {
+            Debug.Log("you have hit the portal in level 1");
             //portalAnimator.Play("Take 001");
             //portalAnimator.SetBool("TouchedPortal", true);
             SceneManager.LoadScene("SecondLevel");
@@ -64,11 +66,23 @@ public class CheckPerspective : MonoBehaviour {
             Debug.Log("you have hit the posbioox0");
             correctPos = true;
         }
+        if (other.tag == "portal2" && portalTwoPlayed) {
+            Debug.Log("you have hit the portal in level 2");
+            SceneManager.LoadScene("ThirdLevel");
+            Debug.Log("this should also not print");
+        }
 	}
 	void OnTriggerExit(Collider other)
 	{
 		if (other.tag == "posBox") {
 			correctPos = false;
+		}
+	}
+
+	IEnumerator PortalOpen() {
+		for (float f = 0f; f <= portal.transform.localScale.z; f += (portal.transform.localScale.z/40)) {
+			portal.transform.localScale.Set (portal.transform.localScale.x, portal.transform.localScale.y, f);
+			yield return new WaitForSeconds(.1f);
 		}
 	}
 

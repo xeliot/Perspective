@@ -15,7 +15,6 @@ namespace Valve.VR.InteractionSystem
 	{
 		public GameObject keyGroup;
 		public Animator keyAnim;
-		public GameObject particles;
 
 		void Start()
 		{
@@ -28,8 +27,6 @@ namespace Valve.VR.InteractionSystem
 				keyGroup.SetActive (true);
 				CheckPerspective.keyInHole = true;
 				keyAnim.SetBool ("KeyInserted", true);
-				particles.SetActive (true);
-				particles.GetComponent<ParticleSystem> ().Play();
 			}
 		}
 	}
