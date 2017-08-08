@@ -7,8 +7,8 @@
 
 ### Team 007
 
-Rachael He - Producer / 2D Artist
-Dave Ho - Programmer
-Colin Garvey - Programmer
-Angela Zhang - 3D Artist
-Phillip Moissis - Sound Designer
+Rachael He - Producer / 2D Artist  
+Dave Ho - Programmer  
+Colin Garvey - Programmer  
+Angela Zhang - 3D Artist  
+Phillip Moissis - Sound Designer  
