@@ -44,6 +44,7 @@ public class CheckPerspective2 : MonoBehaviour {
 				solvedPerson.SetActive (true);
 				puzzlePerson.SetActive (false);
 				personAnimator.SetBool ("Played", true);
+				StartCoroutine ("SpawnBlock");
 			}
 			else if (hit.collider.tag == "focusPerson") {
 				Debug.Log ("Gaze is correct, but position is wrong");
@@ -86,6 +87,16 @@ public class CheckPerspective2 : MonoBehaviour {
 		}
 		if (other.tag == "posBoxWord") {
 			correctPosWord = false;
+		}
+	}
+
+	IEnumerator SpawnBlock () 
+	{
+		for (float f = 0f; f <= 1; f += 1) {
+			if (Mathf.Abs (f - 1f) < .1f) {
+				solvedWord.SetActive (true);
+			}
+			yield return new WaitForSeconds (3f);
 		}
 	}
 
