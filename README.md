@@ -1,6 +1,8 @@
 # Perspective  
 
  "Perspective" is a puzzle game built on virtual reality using the HTC Vive. It utilizes the sense of sight and a person's various perspectives to add to the game's creativity.
+ 
+[See Sample Gameplay](https://youtu.be/_4RObSFe8p8)
 
 (c) 2017 Team 007  
 - All Rights Reserved
