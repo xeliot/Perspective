@@ -17,6 +17,18 @@ TagManager:
   - wordPosBox
   - focusUmbrella
   - posBoxUmbrella
+  - summerPainting
+  - winterPainting
+  - springPainting
+  - fallPainting
+  - focusSled
+  - focusShovel
+  - focusRake
+  - focusBucket
+  - posBoxSled
+  - posBoxShovel
+  - posBoxRake
+  - posBoxBucket
   layers:
   - Default
   - TransparentFX

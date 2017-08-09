@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BucketScripts : MonoBehaviour {
+public class BucketScript : MonoBehaviour {
 
 	ShovelScript shovelScript;
 

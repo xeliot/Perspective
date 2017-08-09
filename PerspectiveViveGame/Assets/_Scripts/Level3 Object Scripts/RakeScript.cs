@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RakeScript : MonoBehaviour {
 
+
 	// Use this for initialization
 	void Start () {
 		
