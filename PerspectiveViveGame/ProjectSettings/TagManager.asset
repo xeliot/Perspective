@@ -29,6 +29,7 @@ TagManager:
   - posBoxShovel
   - posBoxRake
   - posBoxBucket
+  - portal3
   layers:
   - Default
   - TransparentFX

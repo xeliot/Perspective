@@ -17,13 +17,14 @@ public class CheckPerspective3 : MonoBehaviour {
 	public GameObject puzzleShovel;
 
 
+
 	private bool portalThreePlayed = false;
 	PickupParent pickupParent;
 
 	private AudioSource mainMusic;
 
 	[SerializeField]
-	//private GameObject portal;
+	private GameObject portal;
 
 	//private Animator portalAnimator;
 
@@ -77,13 +78,13 @@ public class CheckPerspective3 : MonoBehaviour {
 				puzzleShovel.SetActive (false);
 			}
 		}
-		/*if (summerSolved && winterSolved && springSolved && fallSolved) {
+		if (EndGame.summerSolved && EndGame.winterSolved && EndGame.springSolved && EndGame.fallSolved) {
             if (!portalThreePlayed) {
 				portal.SetActive (true);
-				StartCoroutine ("PortalOpen");
+				//StartCoroutine ("PortalOpen");
                 portalThreePlayed = true;
             }
-        }*/
+        }
 	}
 	void OnTriggerEnter(Collider other)
 	{
@@ -115,7 +116,7 @@ public class CheckPerspective3 : MonoBehaviour {
 		}
 		if (other.tag == "portal3" && portalThreePlayed) {
 			Debug.Log("you have hit the portal in level 3");
-			//SceneManager.LoadScene("EndCredits");
+			SceneManager.LoadScene("Credits");
 			//Debug.Log("this should also not print");
 		}
 	}
